@@ -1,0 +1,78 @@
+---
+layout: default
+title: Numéro au hasard
+---
+
+<style>
+  .inputs-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .generator-btn {
+    padding: 10px 18px;
+    background: #00ff88;
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .generator-btn:hover {
+    background: #00ccff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+  }
+</style>
+<h1>Numéro au hasard</h1>
+
+<p>Bienvenue sur mon générateur de numéro au hasard.</p>
+<div class="inputs-container">
+  <div class="input-group">
+    <label for="min">Valeur minimale</label>
+    <input id="min" type="number" value="0" />
+  </div>
+
+  <div class="input-group">
+    <label for="max">Valeur maximale</label>
+    <input id="max" type="number" value="1" />
+  </div>
+
+  <button class="generator-btn" onclick="getNumber()">Générer un numéro</button>
+</div>
+
+<p id="resultat"></p>
+<script>
+  function getNumber() {
+    const minValue = Number(document.getElementById("min").value);
+    const maxValue = Number(document.getElementById("max").value);
+
+    if (isNaN(minValue) || isNaN(maxValue)) {
+      document.getElementById("resultat").textContent =
+        "Veuillez renseigner les deux valeurs.";
+      return;
+    }
+
+    if (minValue > maxValue) {
+      document.getElementById("resultat").textContent =
+        "La valeur minimale doit être inférieure à la valeur maximale.";
+      return;
+    }
+
+    const num =
+      Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+
+    document.getElementById("resultat").textContent = "Votre numéro : " + num;
+  }
+</script>

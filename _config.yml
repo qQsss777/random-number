@@ -1,0 +1,6 @@
+# Build settings
+url: "https://qqsss7777.github.io"
+baseurl: "/random-number"
+theme: jekyll-theme-hacker
+plugins:
+  - jekyll-feed
